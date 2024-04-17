@@ -21,6 +21,8 @@ autosummary_generate = True
 
 # autodoc_typehints = "none"  # Disable links in signature
 
+napoleon_google_docstring = False
+
 intersphinx_mapping = {
     "pandas": (
         "https://pandas.pydata.org/pandas-docs/stable/",

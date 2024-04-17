@@ -72,6 +72,8 @@ autosummary_generate = True
 
 # autodoc_typehints = "none"  # Disable links in signature
 
+napoleon_google_docstring = False
+
 intersphinx_mapping = {
     "pandas": (
         "https://pandas.pydata.org/pandas-docs/stable/",
@@ -89,28 +91,33 @@ intersphinx_mapping = {
 EOF
 
 # Create docs/source/lumache.rst and docs/source/modules.rst
-sphinx-apidoc -f -o docs/source .
+#cd docs
+#sphinx-apidoc -f -o source ../.
+#cd ..
+# Create docs/source/lumache.rst
+cat <<'EOF' >docs/source/lumache.rst
+lumache module
+==============
+
+.. automodule:: lumache
+   :members:
+   :undoc-members:
+   :show-inheritance:
+EOF
+
+# Create docs/source/modules.rst
+cat <<'EOF' >docs/source/modules.rst
+lumache
+=======
+
+.. toctree::
+   :maxdepth: 4
+
+   lumache
+EOF
 
 # Create the docs folder
 #sphinx-quickstart docs --sep --project Lumache --author Graziella --release 0.1 --language en
-# Create docs/Makefile
-cat <<'EOF' >docs/Makefile
-SPHINXOPTS    ?=
-SPHINXBUILD   ?= sphinx-build
-SOURCEDIR     = source
-BUILDDIR      = build
-
-# Put it first so that "make" without argument is like "make help".
-help:
-	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-
-.PHONY: help Makefile
-
-# Catch-all target: route all unknown targets to Sphinx using the new
-# "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
-%: Makefile
-	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-EOF
 
 # Create docs/source/index.rst
 cat <<'EOF' >docs/source/index.rst
@@ -157,4 +164,24 @@ To use Lumache, first install it using pip:
 EOF
 
 cd docs
+
+# Create docs/Makefile
+cat <<'EOF' >Makefile
+SPHINXOPTS    ?=
+SPHINXBUILD   ?= sphinx-build
+SOURCEDIR     = source
+BUILDDIR      = build
+
+# Put it first so that "make" without argument is like "make help".
+help:
+	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+.PHONY: help Makefile
+
+# Catch-all target: route all unknown targets to Sphinx using the new
+# "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
+%: Makefile
+	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+EOF
+
 make html
