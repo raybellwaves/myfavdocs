@@ -19,5 +19,4 @@ Contents
 .. toctree::
 
    usage
-   lumache
-   modules
+   api

@@ -104,26 +104,24 @@ EOF
 #cd docs
 #sphinx-apidoc -f -o source ../.
 #cd ..
-# Create docs/source/lumache.rst
-cat <<'EOF' >docs/source/lumache.rst
-lumache module
-==============
 
-.. automodule:: lumache
-   :members:
-   :undoc-members:
-   :show-inheritance:
-EOF
+# Create docs/source/api.rst
+cat <<'EOF' >docs/source/api.rst
+.. currentmodule:: lumache
 
-# Create docs/source/modules.rst
-cat <<'EOF' >docs/source/modules.rst
-lumache
-=======
+.. _api:
 
-.. toctree::
-   :maxdepth: 4
+#############
+API reference
+#############
 
-   lumache
+Top-level functions
+===================
+
+.. autosummary::
+   :toctree: generated/
+
+   np_get_random_ingredients
 EOF
 
 # Create the docs folder
@@ -152,8 +150,7 @@ Contents
 .. toctree::
 
    usage
-   lumache
-   modules
+   api
 EOF
 
 # Create docs/source/usage.rst
