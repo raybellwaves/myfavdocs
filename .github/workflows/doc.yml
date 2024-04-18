@@ -9,14 +9,14 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
+      - uses: actions/checkout@v4.1.2
+      - uses: actions/setup-python@v5.1.0
       - name: Install dependencies
         run: |
           pip install pandas pydata-sphinx-theme sphinx
       - name: Sphinx build
         run: |
-          sphinx-build docs build
+          sphinx-build lumache/docs build
       # Build locally and just push
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
