@@ -1,5 +1,5 @@
 # myfavdocs
-My opinionated favourite (yes that u is left in favourite intentially) docs 
+My opinionated favourite (yes that u is left in favourite intentially) docs.
 
 The code to generate the files is `make_files.sh` and is designed to run on a Mac.
 
