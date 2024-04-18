@@ -14,8 +14,8 @@ Check out the :doc:`usage` section for further information, including how to
    This project is under active development.
 
 .. toctree::
-   :maxdepth: 2
-   :hidden:
+   :maxdepth: 1
+   :caption: Contents:
 
    Usasge <usage>
    API Reference <api>
