@@ -11,6 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
+      - name: Install dependencies
+        run: |
+          pip install pandas pydata-sphinx-theme sphinx
+      - name: Sphinx build
+        run: |
+          sphinx-build doc build
       # Build locally and just push
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
