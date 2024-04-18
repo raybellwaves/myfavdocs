@@ -16,6 +16,7 @@ EOF
 # Create lumache.py
 cat <<'EOF' >myfavdocs.py
 import numpy as np
+import pandas as pd
 
 
 def np_get_random_ingredients(
