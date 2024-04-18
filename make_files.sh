@@ -1,11 +1,7 @@
 #!/bin/zsh
 # A shell script that generates files provided in the sphinx tutorial:
 # https://www.sphinx-doc.org/en/master/tutorial/getting-started.html
-# If you want start from a clean folder run `rm -rf lumache` first
 # run as ./make_files.sh
-
-mkdir myfavdocs
-cd myfavdocs
 
 # Create README.rst
 cat <<'EOF' >README.rst
