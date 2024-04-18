@@ -177,13 +177,12 @@ Check out the :doc:`usage` section for further information, including how to
 
    This project is under active development.
 
-Contents
---------
-
 .. toctree::
+   :maxdepth: 2
+   :hidden:
 
-   usage
-   api
+   Usasge <usage>
+   API Reference <api>
 EOF
 
 # Create docs/source/usage.rst
