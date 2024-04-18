@@ -13,3 +13,4 @@ Top-level functions
    :toctree: generated/
 
    np_get_random_ingredients
+   pd_get_random_ingredients

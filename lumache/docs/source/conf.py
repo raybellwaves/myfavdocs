@@ -1,7 +1,15 @@
+import os
 import pathlib
+import subprocess
 import sys
 sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
-import sphinx_autosummary_accessors
+print("sys.path:", sys.path)
+if "CONDA_DEFAULT_ENV" in os.environ or "conda" in sys.executable:
+    print("conda environment:")
+    subprocess.run([os.environ.get("CONDA_EXE", "conda"), "list"])
+else:
+    print("pip environment:")
+    subprocess.run([sys.executable, "-m", "pip", "list"])
 project = "Lumache"
 copyright = "2024, Graziella"
 author = "Graziella"
@@ -11,7 +19,6 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
-    "sphinx_autosummary_accessors",
 ]
 
 
@@ -24,14 +31,7 @@ autosummary_generate = True
 
 # autodoc_typehints = "none"  # Disable links in signature
 
-napoleon_google_docstring = False
-napoleon_use_param = True
-napoleon_use_rtype = True
-
-numpydoc_class_members_toctree = True
-numpydoc_show_class_members = False
-
-templates_path = ["_templates", sphinx_autosummary_accessors.templates_path]
+templates_path = ["_templates"]
 
 intersphinx_mapping = {
     "pandas": (

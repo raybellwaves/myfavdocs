@@ -21,7 +21,10 @@ cat <<'EOF' >lumache.py
 import numpy as np
 
 
-def np_get_random_ingredients(n: int = 3) -> np.ndarray:
+def np_get_random_ingredients(
+    n: int = 3,
+    country: str = "italy",
+) -> np.ndarray:
     """
     Return a list of random ingredients as a :class:`numpy.ndarray`.
 
@@ -29,6 +32,8 @@ def np_get_random_ingredients(n: int = 3) -> np.ndarray:
     ----------
     n : int
         Number of ingredients to return.
+    country : str
+        Home country of food.
 
     Returns
     -------
@@ -41,6 +46,36 @@ def np_get_random_ingredients(n: int = 3) -> np.ndarray:
     array(['shells', 'gorgonzola', 'parsley'], dtype='<U10')
     """
     return np.array(["shells", "gorgonzola", "parsley"])
+
+
+def pd_get_random_ingredients(
+    n: int = 3,
+    country: str = "italy",
+) -> np.ndarray:
+    """
+    Return a list of random ingredients as a :class:`pandas.DataFrame`.
+
+    Parameters
+    ----------
+    n : int
+        Number of ingredients to return.
+    country : str
+        Home country of food.
+
+    Returns
+    -------
+    pandas.DataFrame
+
+    Examples
+    --------
+    >>> import lumache
+    >>> lumache.pd_get_random_ingredients()
+                0
+    0      shells
+    1  gorgonzola
+    2     parsley
+    """
+    return pd.DataFrame(np.array(["shells", "gorgonzola", "parsley"]))
 EOF
 
 mkdir -p docs/source
@@ -49,10 +84,18 @@ mkdir -p docs/source/_templates
 
 # Create docs/source/conf.py
 cat <<'EOF' >docs/source/conf.py
+import os
 import pathlib
+import subprocess
 import sys
 sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
-import sphinx_autosummary_accessors
+print("sys.path:", sys.path)
+if "CONDA_DEFAULT_ENV" in os.environ or "conda" in sys.executable:
+    print("conda environment:")
+    subprocess.run([os.environ.get("CONDA_EXE", "conda"), "list"])
+else:
+    print("pip environment:")
+    subprocess.run([sys.executable, "-m", "pip", "list"])
 project = "Lumache"
 copyright = "2024, Graziella"
 author = "Graziella"
@@ -62,7 +105,6 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
-    "sphinx_autosummary_accessors",
 ]
 
 
@@ -75,14 +117,7 @@ autosummary_generate = True
 
 # autodoc_typehints = "none"  # Disable links in signature
 
-napoleon_google_docstring = False
-napoleon_use_param = True
-napoleon_use_rtype = True
-
-numpydoc_class_members_toctree = True
-numpydoc_show_class_members = False
-
-templates_path = ["_templates", sphinx_autosummary_accessors.templates_path]
+templates_path = ["_templates"]
 
 intersphinx_mapping = {
     "pandas": (
@@ -122,6 +157,7 @@ Top-level functions
    :toctree: generated/
 
    np_get_random_ingredients
+   pd_get_random_ingredients
 EOF
 
 # Create the docs folder

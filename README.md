@@ -7,5 +7,5 @@ This came about when starting with https://www.sphinx-doc.org/en/master/tutorial
 
 What I like and why:
  - xarray (https://docs.xarray.dev/en/stable/) has my favorite docs but I may be biased. I made decisions here based in their configuration.
- - using sphinx.ext.napoleon over numpydoc as it gives hyperlinks of types in the Parameters and Return. 
- - In my case I left `autodoc_typehints` as the default. You can set it to `None` if you have types that get pretty long e.g. Optional[dict[str | int, list[int | str], float]]...
+ - Using `sphinx.ext.napoleon` over `numpydoc` as it gives hyperlinks of types in the Parameters and Return. I also like the bullet points that it uses for Parameters.
+ - In my case I left `autodoc_typehints` as the default. You can set it to `None` if you have types that get pretty long e.g. `Optional[dict[str | int, list[int | str], float]]...`

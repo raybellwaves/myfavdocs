@@ -1,4 +1,3 @@
 pandas
 pydata-sphinx-theme
 sphinx
-sphinx-autosummary-accessors
