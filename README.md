@@ -1,5 +1,6 @@
 # myfavdocs
 My opinionated favourite (yes that u is left in favourite intentially) docs.
+Hosted at https://raybellwaves.github.io/myfavdocs/.
 
 The code to generate the files is `make_files.sh` and is designed to run on a Mac.
 
