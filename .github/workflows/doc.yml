@@ -16,7 +16,7 @@ jobs:
           pip install pandas pydata-sphinx-theme sphinx
       - name: Sphinx build
         run: |
-          sphinx-build docs build
+          sphinx-build docs _build
       # Build locally and just push
       - id: deployment
         uses: sphinx-notes/pages@v3
@@ -28,7 +28,7 @@ jobs:
         with:
           publish_branch: gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ steps.deployment.outputs.artifact }}
+          publish_dir: _build/
           force_orphan: true
 # jobs:
 #   pages:
