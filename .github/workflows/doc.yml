@@ -9,8 +9,8 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.2
-      - uses: actions/setup-python@v5.1.0
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
       - name: Install dependencies
         run: |
           pip install pandas pydata-sphinx-theme sphinx
