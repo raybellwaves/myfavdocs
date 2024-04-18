@@ -4,20 +4,21 @@
 # If you want start from a clean folder run `rm -rf lumache` first
 # run as ./make_files.sh
 
-mkdir lumache
-cd lumache
+mkdir myfavdocs
+cd myfavdocs
 
 # Create README.rst
 cat <<'EOF' >README.rst
-Lumache
-=======
+myfavdocs
+=========
 
 **Lumache** (/lu'make/) is a Python library for cooks and food lovers that
-creates recipes mixing random ingredients
+creates recipes mixing random ingredients. I've rename it to myfavdocs to
+back life easier deploying to gh-pages.
 EOF
 
 # Create lumache.py
-cat <<'EOF' >lumache.py
+cat <<'EOF' >myfavdocs.py
 import numpy as np
 
 
@@ -41,8 +42,8 @@ def np_get_random_ingredients(
 
     Examples
     --------
-    >>> import lumache
-    >>> lumache.np_get_random_ingredients()
+    >>> import myfavdocs
+    >>> myfavdocs.np_get_random_ingredients()
     array(['shells', 'gorgonzola', 'parsley'], dtype='<U10')
     """
     return np.array(["shells", "gorgonzola", "parsley"])
@@ -68,8 +69,8 @@ def pd_get_random_ingredients(
 
     Examples
     --------
-    >>> import lumache
-    >>> lumache.pd_get_random_ingredients()
+    >>> import myfavdocs
+    >>> myfavdocs.pd_get_random_ingredients()
                 0
     0      shells
     1  gorgonzola
@@ -96,7 +97,7 @@ if "CONDA_DEFAULT_ENV" in os.environ or "conda" in sys.executable:
 else:
     print("pip environment:")
     subprocess.run([sys.executable, "-m", "pip", "list"])
-project = "Lumache"
+project = "myfavdocs"
 copyright = "2024, Graziella"
 author = "Graziella"
 
@@ -107,7 +108,6 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
 ]
-
 
 exclude_patterns = []
 pygments_style = "sphinx"
@@ -143,7 +143,7 @@ EOF
 
 # Create docs/source/api.rst
 cat <<'EOF' >docs/source/api.rst
-.. currentmodule:: lumache
+.. currentmodule:: myfavdocs
 
 .. _api:
 
@@ -166,8 +166,8 @@ EOF
 
 # Create docs/source/index.rst
 cat <<'EOF' >docs/source/index.rst
-Welcome to Lumache's documentation!
-===================================
+Welcome to myfavdocs's documentation!
+=====================================
 
 **Lumache** (/lu'make/) is a Python library for cooks and food lovers that
 creates recipes mixing random ingredients.  It pulls data from the `Open Food
@@ -200,11 +200,11 @@ Usage
 Installation
 ------------
 
-To use Lumache, first install it using pip:
+To use myfavdocs, first install it using pip:
 
 .. code-block:: console
 
-   (.venv) $ pip install lumache
+   (.venv) $ pip install myfavdocs
 EOF
 
 cd docs
