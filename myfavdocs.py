@@ -47,8 +47,7 @@ def pd_get_random_ingredients(
     -------
     pandas.DataFrame
 
-    .. todo::
-        Fix this
+    .. todo:: Fix this
 
     Examples
     --------

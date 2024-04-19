@@ -13,6 +13,8 @@ Check out the :doc:`usage` section for further information, including how to
 
    This project is under active development.
 
+.. todo:: Add more info
+
 .. toctree::
    :maxdepth: 1
    :caption: Contents:

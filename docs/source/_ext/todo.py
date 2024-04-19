@@ -46,7 +46,6 @@ class TodoDirective(SphinxDirective):
         self.env.todo_all_todos.append(
             {
                 "docname": self.env.docname,
-                "lineno": self.lineno,
                 "todo": todo_node.deepcopy(),
                 "target": targetnode,
             }
@@ -92,23 +91,15 @@ def process_todo_nodes(app, doctree, fromdocname):
 
         for todo_info in env.todo_all_todos:
             para = nodes.paragraph()
-            filename = env.doc2path(todo_info["docname"], base=None)
-            description = _(
-                "(The original entry is located in %s, line %d and can be found "
-            ) % (filename, todo_info["lineno"])
-            para += nodes.Text(description)
 
             # Create a reference
             newnode = nodes.reference("", "")
-            innernode = nodes.emphasis(_("here"), _("here"))
             newnode["refdocname"] = todo_info["docname"]
             newnode["refuri"] = app.builder.get_relative_uri(
                 fromdocname, todo_info["docname"]
             )
             newnode["refuri"] += "#" + todo_info["target"]["refid"]
-            newnode.append(innernode)
             para += newnode
-            para += nodes.Text(".)")
 
             # Insert into the todolist
             content.extend(
