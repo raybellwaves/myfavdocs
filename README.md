@@ -4,7 +4,7 @@ Hosted at https://raybellwaves.github.io/myfavdocs/.
 
 The code to generate the files is `make_files.sh` and is designed to run on a Mac.
 
-This came about when starting with https://www.sphinx-doc.org/en/master/tutorial/getting-started.html and building upon it.
+This came about when starting with https://www.sphinx-doc.org/en/master/tutorial/getting-started.html and https://www.sphinx-doc.org/en/master/development/tutorials/index.html and building upon them.
 
 What I like and why:
  - xarray (https://docs.xarray.dev/en/stable/) has my favorite docs but I may be biased. I made decisions here based in their configuration.

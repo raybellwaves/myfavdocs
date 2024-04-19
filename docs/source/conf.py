@@ -3,7 +3,8 @@ import pathlib
 import subprocess
 import sys
 sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
-print("sys.path:", sys.path)
+sys.path.append(os.path.abspath("./_ext"))
+print(f"{sys.path=}")
 if "CONDA_DEFAULT_ENV" in os.environ or "conda" in sys.executable:
     print("conda environment:")
     subprocess.run([os.environ.get("CONDA_EXE", "conda"), "list"])
@@ -20,6 +21,7 @@ extensions = [
     "sphinx.ext.githubpages",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
+    "helloworld",
 ]
 
 exclude_patterns = []

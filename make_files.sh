@@ -79,6 +79,32 @@ EOF
 mkdir -p docs/source
 mkdir -p docs/source/_static
 mkdir -p docs/source/_templates
+mkdir -p docs/source/_ext
+
+# Create docs/source/_ext/helloworld.py
+cat <<'EOF' >docs/source/_ext/helloworld.py
+from docutils import nodes
+from docutils.parsers.rst import Directive
+
+from sphinx.application import Sphinx
+from sphinx.util.typing import ExtensionMetadata
+
+
+class HelloWorld(Directive):
+    def run(self):
+        paragraph_node = nodes.paragraph(text='Hello World!')
+        return [paragraph_node]
+
+
+def setup(app: Sphinx) -> ExtensionMetadata:
+    app.add_directive('helloworld', HelloWorld)
+
+    return {
+        'version': '0.1',
+        'parallel_read_safe': True,
+        'parallel_write_safe': True,
+    }
+EOF
 
 # Create docs/source/conf.py
 cat <<'EOF' >docs/source/conf.py
@@ -87,7 +113,8 @@ import pathlib
 import subprocess
 import sys
 sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
-print("sys.path:", sys.path)
+sys.path.append(os.path.abspath("./_ext"))
+print(f"{sys.path=}")
 if "CONDA_DEFAULT_ENV" in os.environ or "conda" in sys.executable:
     print("conda environment:")
     subprocess.run([os.environ.get("CONDA_EXE", "conda"), "list"])
@@ -104,6 +131,7 @@ extensions = [
     "sphinx.ext.githubpages",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
+    "helloworld",
 ]
 
 exclude_patterns = []
@@ -201,6 +229,14 @@ To use myfavdocs, first install it using pip:
 .. code-block:: console
 
    (.venv) $ pip install myfavdocs
+
+.. _extentions:
+
+Extenstions
+-----------
+
+.. helloworld::
+
 EOF
 
 cd docs
