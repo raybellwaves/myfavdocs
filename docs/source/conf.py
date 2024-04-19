@@ -16,13 +16,15 @@ copyright = "2024, Graziella"
 author = "Graziella"
 
 extensions = [
+    # "numpydoc",  # opting for sphinx.ext.napoleon instead
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
     "sphinx.ext.githubpages",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
+    "sphinx.ext.todo",    
     "helloworld",
-    "todo",
+    # "todo",
 ]
 
 exclude_patterns = []
