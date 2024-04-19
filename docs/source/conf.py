@@ -22,18 +22,20 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
     "helloworld",
+    "todo",
 ]
 
 exclude_patterns = []
 pygments_style = "sphinx"
 html_theme = "pydata_sphinx_theme"
 html_static_path = ["_static"]
-
-autosummary_generate = True
+templates_path = ["_templates"]
 
 # autodoc_typehints = "none"  # Disable links in signature
 
-templates_path = ["_templates"]
+autosummary_generate = True
+
+todo_include_todos = True
 
 intersphinx_mapping = {
     "pandas": (
