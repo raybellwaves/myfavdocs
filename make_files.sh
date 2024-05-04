@@ -275,9 +275,9 @@ extensions = [
     "sphinx.ext.githubpages",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
-    # "sphinx.ext.todo",    
+    "sphinx.ext.todo",    
     "helloworld",
-    "todo",
+    # "todo",
 ]
 
 exclude_patterns = []
