@@ -65,7 +65,7 @@ def pd_get_random_ingredients(
     pandas.DataFrame
 
 
-    .. todo:: Fix this
+    .. todo:: Fix this and checkout :class:`pandas.DataFrame`
 
     Examples
     --------
